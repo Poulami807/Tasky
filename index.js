@@ -27,7 +27,7 @@ const generateHtml = (
     <span class="badge bg-primary">${taskData.type}</span>
   </div>
   <div class="card-footer">
-    <button class="btn btn-outline-primary" name=${taskData.id} data-bs-toggle="modal" data-bs-target="#showTask" onclick="openTask.apply(this,arguments)">Open Task</button>
+    <button class="btn btn-outline-primary" name=${taskData.id} id="OpenTask" data-condition="modalCondition" data-bs-toggle="modal" data-bs-target="#showTask" onclick="openTask.apply(this,arguments)">Open Task</button>
   </div>
 </div>
 </div>`;
@@ -147,6 +147,7 @@ const editCard = (event) => {
 
   //apply the changes on clicking save changes button
   saveChangesButton.setAttribute("onclick", "saveEdit.apply(this,arguments)");
+  saveChangesButton.setAttribute("data-bs-toggle","collapse");
 };
 
 const saveEdit = (event) => {
@@ -182,6 +183,10 @@ const saveEdit = (event) => {
   taskDescription.setAttribute("contenteditable", "false");
   taskType.setAttribute("contenteditable", "false");
   saveChangesButton.innerHTML = "Open Task";
+  saveChangesButton.setAttribute("data-bs-toggle","modal");
+
+
+
 };
 
 //open task modal
@@ -217,4 +222,5 @@ const searchTask=()=>{
     });
    };
    */
+  
   
